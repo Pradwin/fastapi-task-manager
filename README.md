@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # FastAPI Task Manager
 
 ## Features
