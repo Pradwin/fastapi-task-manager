@@ -1,16 +1,29 @@
+# FastAPI Task Manager API
 
-# FastAPI Task Manager
+A backend Task Management API built using FastAPI, PostgreSQL, SQLAlchemy, JWT Authentication, and Docker.
 
 ## Features
-- JWT Authentication
+
 - User Signup/Login
+- JWT Authentication
+- Protected Routes
 - Create, Update, Delete Tasks
-- User-specific data
+- Task Status Filtering
+- Pagination
+- PostgreSQL Database
+- Dockerized Application
+- Docker Compose Setup
 
 ## Tech Stack
+
 - FastAPI
 - PostgreSQL
 - SQLAlchemy
+- Docker
+- Docker Compose
+- JWT Authentication
 
-## How to run
-uvicorn main:app --reload
+## Run Locally
+
+```bash
+docker compose up --build
