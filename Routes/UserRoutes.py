@@ -7,6 +7,7 @@ from Utils.Security import verify_password
 from Utils.Jwt_handler import create_token
 from Models.models import UserDB
 from Utils.Dependencies import get_current_user
+from Utils.Logging import logger
 
 router = APIRouter()
 
@@ -21,6 +22,7 @@ def login(user: LoginRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Invalid password")
 
     token = create_token({"sub": db_user.email})
+    logger.info(f"User logged in: {user.email}")
 
     return {"access_token": token}
 

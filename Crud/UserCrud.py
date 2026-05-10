@@ -1,7 +1,7 @@
-import uuid
 from Models.models import UserDB
 from Utils.Security import hash_password
 from fastapi import HTTPException
+from Utils.Logging import logger
 
 
 def create_user(db, user):
@@ -17,23 +17,9 @@ def create_user(db, user):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    logger.info(f"User Created: {user.email}")
 
     return new_user
-
-
-def create_user(db,user):
-    user_db = UserDB(
-        id=str(uuid.uuid4()),
-        name=user.name,
-        age=user.age,
-        email=user.email,
-        password=hash_password(user.password)
-    )
-
-    db.add(user_db)
-    db.commit()
-
-    return user_db
 
 
 def get_users(db,current_user):
@@ -55,6 +41,7 @@ def update_user(db,user_id,user):
 
     db.commit()
     db.refresh(existing_user)
+    logger.info(f"User Updated: {user.email}")
 
     return existing_user
 
@@ -68,5 +55,6 @@ def delete_user(db,user_id):
 
     db.delete(user)
     db.commit()
+    logger.warning(f"User Deleted: {user.email}")
 
     return user
