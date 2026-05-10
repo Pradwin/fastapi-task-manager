@@ -19,7 +19,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-            cd fastapi-task-manager
+            cd /home/ec2-user/Fast-API-Manager/fastapi-task-manager
             git pull origin main
             docker compose down
             docker compose up --build -d
